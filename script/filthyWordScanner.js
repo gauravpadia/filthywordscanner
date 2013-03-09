@@ -27,7 +27,7 @@ var methods = {
 
 $.fn.filthyWordScanner = function( options ){
 	console.log("filthyWordScanner starts");
-	var scan;
+	var scanner;
 	var id = options.wordScanToApply;
 	var words = $("#"+id).val().split(" ");
 	
@@ -43,10 +43,19 @@ $.fn.filthyWordScanner = function( options ){
 		'characterToReplaceWith'	: '*'
 	},options);
 	if(options.jsonFileLocationToRead){
-		scan = methods.read(options.jsonFileLocationToRead);
+		scanner = methods.read(options.jsonFileLocationToRead);
 	}
-	for(var i=0;i< scan.length;i++){
+	for(var i=0;i< words.length;i++){
 		
+		for(var j=0;j< scanner.words.length;j++){
+			
+			if( words[i].length == scanner.words[j].length && words[i].toLowerCase().indexOf( scanner.words[j].toLowerCase() ) == 0 ){
+				
+//				console.log(scanner.words[j]);
+//				console.log(words[i].replace( words[i],settings.characterToReplaceWith ));
+				
+			}
+		}
 	}
 
 	
